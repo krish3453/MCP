@@ -49,6 +49,27 @@ server.tool(
   }
 );
 
+
+
+
+server.tool(
+  "greet",
+  "Greet a person",
+  {
+    name: z.string().describe("The name of the person to greet"),
+  },
+  async ({ name }) => {
+    return {
+      content: [
+        {
+          type: "text",
+          text: `Hello, ${name}!`,
+        },
+      ],
+    };
+  }
+);
+
 const transport = new StdioServerTransport();
 
 await server.connect(transport);
